@@ -40,7 +40,7 @@ class Command(BaseCommand):
         json_fixtures = []
         for fixture_path in app_fixtures:
             try:
-                root, dirs, files = os.walk(fixture_path).next()
+                root, dirs, files = next(os.walk(fixture_path))
                 for file in files:
                     if file.rsplit('.', 1)[-1] == 'json':
                         json_fixtures.append((root, os.path.join(root, file)))
